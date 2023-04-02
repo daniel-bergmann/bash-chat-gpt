@@ -13,13 +13,24 @@ const ui = readline.createInterface({
   output: process.stdout,
 })
 
+const fillerFeedback = [
+  "I've heard that one before. Let's see...",
+  "Hmm... interesting question.",
+  "Let me google that for you, you lazy bum.",
+  "Open AI invested all that money into me and this is the question you ask me? Ok, one moment...",
+]
+
 ui.prompt()
 ui.on("line", async (input) => {
   const res = await openai.createChatCompletion({
     model: "gpt-3.5-turbo",
     messages: [{ role: "user", content: input }],
   })
-  console.log(res.data.choices[0].message.content)
+  console.log(fillerFeedback[Math.floor(Math.random() * fillerFeedback.length)])
+  setTimeout(() => {
+    console.log(res.data.choices[0].message.content)
+  }, 3000)
+
   ui.prompt()
 })
 
