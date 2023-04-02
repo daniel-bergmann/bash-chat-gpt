@@ -6,5 +6,5 @@ the chat gpt website is too slow so I made my own version to be used in the term
 
 1) create a .env file
 2) insert your API key into the .env file
-3) in the root directory run yarn start
+3) in the root directory run `yarn start`
 
